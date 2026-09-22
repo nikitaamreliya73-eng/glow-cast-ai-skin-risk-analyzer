@@ -1,0 +1,1732 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLOW CAST — Weather Adaptive Beauty</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         HOME — EXISTING CODE — DO NOT CHANGE
+         ========================================================= -->
+
+    <section class="cover-page">
+
+        <img src="{{ url_for('static', filename='images/cover.png') }}"
+             class="cover-image"
+             alt="GLOW CAST Cover">
+
+        <img src="{{ url_for('static', filename='images/logo.png') }}"
+             class="aurelia-logo"
+             alt="GLOW CAST Logo">
+
+        <nav class="premium-navbar">
+
+            <a href="#" class="nav-link active">
+                HOME
+            </a>
+
+            <a href="#about" class="nav-link">
+                ABOUT
+            </a>
+
+            <a href="#analyze" class="nav-link">
+                ANALYZE
+            </a>
+
+            <a href="#how-it-works" class="nav-link">
+                HOW IT WORKS
+            </a>
+
+        </nav>
+
+
+        <div class="social-sidebar">
+
+            <a href="https://www.linkedin.com/in/amreliya-nikita-a63893275"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-icon"
+               aria-label="LinkedIn">
+
+                <i class="fa-brands fa-linkedin-in"></i>
+
+                <span class="social-tooltip">
+                    LINKEDIN
+                </span>
+
+            </a>
+
+
+            <a href="https://github.com/nikitaamreliya73-eng"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-icon"
+               aria-label="GitHub">
+
+                <i class="fa-brands fa-github"></i>
+
+                <span class="social-tooltip">
+                    GITHUB
+                </span>
+
+            </a>
+
+
+            <a href="https://wa.me/917069250192"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-icon"
+               aria-label="WhatsApp">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                <span class="social-tooltip">
+                    WHATSAPP
+                </span>
+
+            </a>
+
+
+            <a href="https://www.instagram.com/nikeeta_002"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="social-icon"
+               aria-label="Instagram">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <span class="social-tooltip">
+                    INSTAGRAM
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                WEATHER ADAPTIVE BEAUTY
+            </p>
+
+
+            <h1>
+                SEE WHAT YOUR SKIN<br>
+                <span>COULD EXPERIENCE</span>
+            </h1>
+
+
+            <p class="hero-description">
+                INTELLIGENCE THAT SEES BEYOND THE SURFACE
+            </p>
+
+
+            <p class="hero-micro-text">
+
+                KNOW YOUR SKIN
+
+                <span>•</span>
+
+                UNDERSTAND YOUR CLIMATE
+
+                <span>•</span>
+
+                PRESERVE YOUR GLOW
+
+            </p>
+
+
+            <a href="#analyze" class="discover-button">
+
+                DISCOVER YOUR SKIN
+
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+
+        <!-- =====================================================
+             GLOW CAST AI SKIN ANALYSIS
+             ===================================================== -->
+
+        <div id="analyze"
+             class="skin-analysis-overlay">
+
+
+            <div class="skin-analysis-panel">
+
+
+                <button class="analysis-close"
+                        type="button"
+                        onclick="closeAnalysis()"
+                        aria-label="Close">
+
+                    ×
+
+                </button>
+
+
+                <p class="analysis-eyebrow">
+
+                    GLOW CAST AI SKIN ANALYSIS
+
+                </p>
+
+
+                <h2>
+
+                    LET'S SEE YOUR <span>SKIN.</span>
+
+                </h2>
+
+
+                <p class="analysis-description">
+
+                    Upload a clear face photo or use your camera
+                    to begin your personalized skin analysis.
+
+                </p>
+
+
+                <div class="photo-options">
+
+
+                    <label for="skin-photo"
+                           class="photo-option">
+
+                        <i class="fa-regular fa-image"></i>
+
+                        <span>
+                            UPLOAD PHOTO
+                        </span>
+
+                        <small>
+                            Choose from your device
+                        </small>
+
+                    </label>
+
+
+                    <button type="button"
+                            class="photo-option"
+                            id="camera-button"
+                            onclick="openCamera()">
+
+                        <i class="fa-solid fa-camera"></i>
+
+                        <span>
+                            USE CAMERA
+                        </span>
+
+                        <small>
+                            Take a photo now
+                        </small>
+
+                    </button>
+
+
+                </div>
+
+
+                <input type="file"
+                       id="skin-photo"
+                       accept="image/*"
+                       hidden>
+
+
+                <div class="camera-container"
+                     id="camera-container">
+
+                    <video id="camera"
+                           autoplay
+                           playsinline>
+                    </video>
+
+
+                    <button type="button"
+                            class="capture-button"
+                            onclick="capturePhoto()">
+
+                        CAPTURE PHOTO
+
+                    </button>
+
+                </div>
+
+
+                <div class="preview-container"
+                     id="preview-container">
+
+                    <img id="photo-preview"
+                         alt="Skin photo preview">
+
+
+                    <button type="button"
+                            class="retake-button"
+                            onclick="resetPhoto()">
+
+                        CHANGE PHOTO
+
+                    </button>
+
+                </div>
+
+
+                <button type="button"
+                        class="analysis-continue"
+                        id="analysis-continue"
+                        onclick="continueAnalysis()">
+
+                    CONTINUE TO ANALYSIS
+
+                    <span>→</span>
+
+                </button>
+
+
+                <p class="analysis-note">
+
+                    Your photo is used only for this analysis session.
+
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================================================
+         ABOUT SECTION — EXISTING ADDITION
+         ========================================================= -->
+
+    <section id="about"
+             class="gc-about-section">
+
+
+        <div class="gc-about-container">
+
+
+            <p class="gc-section-eyebrow">
+
+                THE GLOW CAST PHILOSOPHY
+
+            </p>
+
+
+            <h2 class="gc-about-title">
+
+                BEAUTY THAT
+                <span>ADAPTS.</span>
+
+            </h2>
+
+
+            <p class="gc-about-intro">
+
+                Your skin doesn't exist in isolation.
+                Temperature, humidity, sunlight and your surroundings
+                continuously influence how it looks and feels.
+                GLOW CAST brings these signals together to create
+                a more intelligent beauty experience.
+
+            </p>
+
+
+            <div class="gc-about-line"></div>
+
+
+            <div class="gc-about-grid">
+
+
+                <div class="gc-about-card">
+
+                    <span class="gc-card-number">
+                        01
+                    </span>
+
+
+                    <div class="gc-card-icon">
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                    </div>
+
+
+                    <h3>
+                        YOUR CLIMATE
+                    </h3>
+
+
+                    <p>
+
+                        Live environmental conditions become part of
+                        your personalized beauty analysis.
+
+                    </p>
+
+                </div>
+
+
+                <div class="gc-about-card">
+
+                    <span class="gc-card-number">
+                        02
+                    </span>
+
+
+                    <div class="gc-card-icon">
+
+                        <i class="fa-solid fa-face-smile"></i>
+
+                    </div>
+
+
+                    <h3>
+                        YOUR SKIN
+                    </h3>
+
+
+                    <p>
+
+                        AI-powered visual analysis helps identify
+                        visible skin characteristics from your photo.
+
+                    </p>
+
+                </div>
+
+
+                <div class="gc-about-card">
+
+                    <span class="gc-card-number">
+                        03
+                    </span>
+
+
+                    <div class="gc-card-icon">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    </div>
+
+
+                    <h3>
+                        YOUR GLOW
+                    </h3>
+
+
+                    <p>
+
+                        Receive beauty insights designed around
+                        your skin and today's atmosphere.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="gc-about-signature">
+
+                <span></span>
+
+                <p>
+                    INTELLIGENCE BEYOND THE SURFACE
+                </p>
+
+                <span></span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ANALYSIS INFORMATION
+         ========================================================= -->
+
+    <section id="analysis-info"
+             class="gc-analysis-section">
+
+
+        <div class="gc-analysis-container">
+
+
+            <div class="gc-analysis-heading">
+
+
+                <p class="gc-section-eyebrow">
+
+                    GLOW CAST INTELLIGENCE
+
+                </p>
+
+
+                <h2 class="gc-analysis-title">
+
+                    SEE YOUR SKIN
+
+                    <span>
+                        DIFFERENTLY.
+                    </span>
+
+                </h2>
+
+
+                <p class="gc-analysis-intro">
+
+                    A simple photograph becomes the starting point
+                    for an intelligent beauty experience. GLOW CAST
+                    combines visual skin insights with environmental
+                    context to help you understand what your skin
+                    may be experiencing.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="gc-analysis-features">
+
+
+                <div class="gc-analysis-feature">
+
+                    <div class="gc-feature-number">
+                        01
+                    </div>
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    <div>
+
+                        <h3>
+                            VISUAL INPUT
+                        </h3>
+
+                        <p>
+
+                            Upload a clear face photograph or use your
+                            device camera to begin.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="gc-analysis-feature">
+
+                    <div class="gc-feature-number">
+                        02
+                    </div>
+
+                    <i class="fa-solid fa-brain"></i>
+
+                    <div>
+
+                        <h3>
+                            AI SKIN INSIGHT
+                        </h3>
+
+                        <p>
+
+                            The system interprets visible characteristics
+                            from the submitted image.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="gc-analysis-feature">
+
+                    <div class="gc-feature-number">
+                        03
+                    </div>
+
+                    <i class="fa-solid fa-temperature-half"></i>
+
+                    <div>
+
+                        <h3>
+                            WEATHER CONTEXT
+                        </h3>
+
+                        <p>
+
+                            Environmental conditions add another layer
+                            of context to the beauty experience.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="gc-analysis-feature">
+
+                    <div class="gc-feature-number">
+                        04
+                    </div>
+
+                    <i class="fa-solid fa-sparkles"></i>
+
+                    <div>
+
+                        <h3>
+                            PERSONALIZED INSIGHT
+                        </h3>
+
+                        <p>
+
+                            Your results are presented as practical,
+                            easy-to-understand beauty guidance.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <a href="#analyze"
+               class="gc-analysis-button">
+
+                BEGIN YOUR ANALYSIS
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         GLOW CAST INTELLIGENCE
+         REPLACES OLD AI WITHOUT CARE VISUALIZATION
+         ========================================================= -->
+
+    <section id="glow-intelligence"
+             class="glow-intelligence-section">
+
+
+        <div class="glow-intelligence-container">
+
+
+            <div class="glow-intelligence-heading">
+
+
+                <span class="glow-intelligence-eyebrow">
+
+                    THE GLOW CAST INTELLIGENCE
+
+                </span>
+
+
+                <h2>
+
+                    BEAUTY INTELLIGENCE,<br>
+
+                    SHAPED BY YOUR
+                    <em>ENVIRONMENT.</em>
+
+                </h2>
+
+
+                <p>
+
+                    GLOW CAST combines AI skin classification with live
+                    environmental intelligence to create a more
+                    personalized beauty experience.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="glow-intelligence-grid">
+
+
+                <!-- CARD 01 -->
+
+                <div class="glow-intelligence-card">
+
+
+                    <span class="glow-card-number">
+                        01
+                    </span>
+
+
+                    <div class="glow-card-icon">
+
+                        <i class="fa-solid fa-face-smile"></i>
+
+                    </div>
+
+
+                    <h3>
+                        AI SKIN PROFILE
+                    </h3>
+
+
+                    <p>
+
+                        Understand your skin type through AI-powered
+                        image analysis.
+
+                    </p>
+
+
+                </div>
+
+
+                <!-- CARD 02 -->
+
+                <div class="glow-intelligence-card">
+
+
+                    <span class="glow-card-number">
+                        02
+                    </span>
+
+
+                    <div class="glow-card-icon">
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                    </div>
+
+
+                    <h3>
+                        LIVE ATMOSPHERE
+                    </h3>
+
+
+                    <p>
+
+                        Temperature, humidity, UV and weather conditions
+                        are considered in real time.
+
+                    </p>
+
+
+                </div>
+
+
+                <!-- CARD 03 -->
+
+                <div class="glow-intelligence-card">
+
+
+                    <span class="glow-card-number">
+                        03
+                    </span>
+
+
+                    <div class="glow-card-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <h3>
+                        ENVIRONMENTAL RISK
+                    </h3>
+
+
+                    <p>
+
+                        Understand how today's atmosphere may interact
+                        with your skin.
+
+                    </p>
+
+
+                </div>
+
+
+                <!-- CARD 04 -->
+
+                <div class="glow-intelligence-card">
+
+
+                    <span class="glow-card-number">
+                        04
+                    </span>
+
+
+                    <div class="glow-card-icon">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    </div>
+
+
+                    <h3>
+                        PERSONALIZED BEAUTY
+                    </h3>
+
+
+                    <p>
+
+                        Receive beauty recommendations adapted to your
+                        skin and environment.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="glow-intelligence-bottom">
+
+
+                <span></span>
+
+
+                <p>
+                    SKIN × WEATHER × INTELLIGENCE
+                </p>
+
+
+                <span></span>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         HOW IT WORKS
+         ========================================================= -->
+
+    <section id="how-it-works"
+             class="gc-how-section">
+
+
+        <div class="gc-how-container">
+
+
+            <p class="gc-section-eyebrow">
+
+                THE PROCESS
+
+            </p>
+
+
+            <h2 class="gc-how-title">
+
+                HOW GLOW CAST
+
+                <span>
+                    WORKS.
+                </span>
+
+            </h2>
+
+
+            <p class="gc-how-intro">
+
+                From one photograph to a more informed beauty routine —
+                designed around your skin and your environment.
+
+            </p>
+
+
+            <div class="gc-process-grid">
+
+
+                <div class="gc-process-card">
+
+                    <div class="gc-process-top">
+
+                        <span>
+                            01
+                        </span>
+
+                        <i class="fa-solid fa-image"></i>
+
+                    </div>
+
+
+                    <h3>
+                        CAPTURE
+                    </h3>
+
+
+                    <p>
+
+                        Upload a clear photo or use your camera
+                        to capture your current skin appearance.
+
+                    </p>
+
+                </div>
+
+
+                <div class="gc-process-card">
+
+                    <div class="gc-process-top">
+
+                        <span>
+                            02
+                        </span>
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                    </div>
+
+
+                    <h3>
+                        ANALYZE
+                    </h3>
+
+
+                    <p>
+
+                        GLOW CAST processes visual information to
+                        identify relevant visible skin characteristics.
+
+                    </p>
+
+                </div>
+
+
+                <div class="gc-process-card">
+
+                    <div class="gc-process-top">
+
+                        <span>
+                            03
+                        </span>
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                    </div>
+
+
+                    <h3>
+                        ADAPT
+                    </h3>
+
+
+                    <p>
+
+                        Environmental conditions provide additional
+                        context for the personalized experience.
+
+                    </p>
+
+                </div>
+
+
+                <div class="gc-process-card">
+
+                    <div class="gc-process-top">
+
+                        <span>
+                            04
+                        </span>
+
+                        <i class="fa-solid fa-sparkles"></i>
+
+                    </div>
+
+
+                    <h3>
+                        DISCOVER
+                    </h3>
+
+
+                    <p>
+
+                        Explore your personalized beauty insights
+                        and understand your skin from a new perspective.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="gc-simulation-note">
+
+
+                <div class="gc-simulation-icon">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        AI VISUAL SIMULATION
+                    </h3>
+
+
+                    <p>
+
+                        GLOW CAST may provide an illustrative visual
+                        projection of how visible skin concerns could
+                        appear if left unaddressed. This is an
+                        educational visualization, not a medical prediction.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="gc-footer">
+
+
+        <div class="gc-footer-logo">
+
+            <img
+                src="{{ url_for('static', filename='images/logo.png') }}"
+                alt="GLOW CAST">
+
+        </div>
+
+
+        <p>
+            WEATHER ADAPTIVE BEAUTY
+        </p>
+
+
+        <span>
+            INTELLIGENCE THAT SEES BEYOND THE SURFACE
+        </span>
+
+
+        <div class="gc-footer-line"></div>
+
+
+        <small>
+            © 2026 GLOW CAST — CREATED BY NIKITA AMRELIYA
+        </small>
+
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        const photoInput =
+            document.getElementById("skin-photo");
+
+
+        const cameraContainer =
+            document.getElementById("camera-container");
+
+
+        const camera =
+            document.getElementById("camera");
+
+
+        const previewContainer =
+            document.getElementById("preview-container");
+
+
+        const preview =
+            document.getElementById("photo-preview");
+
+
+        const continueButton =
+            document.getElementById("analysis-continue");
+
+
+        let cameraStream = null;
+
+
+        let capturedPhoto = null;
+
+
+
+        /* =========================================================
+           PHOTO UPLOAD
+           ========================================================= */
+
+        photoInput.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (!file) return;
+
+
+            stopCamera();
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload = function (event) {
+
+                capturedPhoto =
+                    event.target.result;
+
+
+                preview.src =
+                    capturedPhoto;
+
+
+                previewContainer.classList.add("show");
+
+
+                continueButton.classList.add("show");
+
+
+                cameraContainer.classList.remove("show");
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        });
+
+
+
+        /* =========================================================
+           CAMERA
+           ========================================================= */
+
+        async function openCamera() {
+
+            try {
+
+                cameraStream =
+                    await navigator.mediaDevices.getUserMedia({
+
+                        video: {
+                            facingMode: "user"
+                        },
+
+                        audio: false
+
+                    });
+
+
+                camera.srcObject =
+                    cameraStream;
+
+
+                cameraContainer.classList.add("show");
+
+
+                previewContainer.classList.remove("show");
+
+
+                continueButton.classList.remove("show");
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Camera error:",
+                    error
+                );
+
+
+                alert(
+                    "Camera access is not available. Please allow camera permission or upload a photo instead."
+                );
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           CAPTURE PHOTO
+           ========================================================= */
+
+        function capturePhoto() {
+
+            if (!cameraStream) return;
+
+
+            const canvas =
+                document.createElement("canvas");
+
+
+            canvas.width =
+                camera.videoWidth;
+
+
+            canvas.height =
+                camera.videoHeight;
+
+
+            const context =
+                canvas.getContext("2d");
+
+
+            context.drawImage(
+                camera,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            capturedPhoto =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.92
+                );
+
+
+            preview.src =
+                capturedPhoto;
+
+
+            stopCamera();
+
+
+            cameraContainer.classList.remove("show");
+
+
+            previewContainer.classList.add("show");
+
+
+            continueButton.classList.add("show");
+
+        }
+
+
+
+        /* =========================================================
+           STOP CAMERA
+           ========================================================= */
+
+        function stopCamera() {
+
+            if (cameraStream) {
+
+                cameraStream
+                    .getTracks()
+                    .forEach(track => track.stop());
+
+
+                cameraStream = null;
+
+            }
+
+
+            if (camera) {
+
+                camera.srcObject = null;
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           RESET PHOTO
+           ========================================================= */
+
+        function resetPhoto() {
+
+            capturedPhoto = null;
+
+
+            photoInput.value = "";
+
+
+            preview.src = "";
+
+
+            previewContainer.classList.remove("show");
+
+
+            continueButton.classList.remove("show");
+
+        }
+
+
+
+        /* =========================================================
+           CLOSE ANALYSIS
+           ========================================================= */
+
+        function closeAnalysis() {
+
+            stopCamera();
+
+
+            window.location.hash = "";
+
+        }
+
+
+
+        /* =========================================================
+           CONTINUE TO ANALYSIS
+           NEW:
+           ASK USER FOR LOCATION
+           ========================================================= */
+
+        function continueAnalysis() {
+
+            if (!capturedPhoto) {
+
+                alert(
+                    "Please upload or capture a photo first."
+                );
+
+                return;
+
+            }
+
+
+
+            /* -----------------------------------------------------
+               CHECK LOCATION SUPPORT
+               ----------------------------------------------------- */
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    "Location services are not supported by this browser."
+                );
+
+                return;
+
+            }
+
+
+
+            continueButton.disabled =
+                true;
+
+
+            continueButton.innerHTML =
+                'GETTING YOUR LOCATION <span>...</span>';
+
+
+
+            /* -----------------------------------------------------
+               ASK USER FOR LOCATION PERMISSION
+               ----------------------------------------------------- */
+
+            navigator.geolocation.getCurrentPosition(
+
+                function (position) {
+
+                    const latitude =
+                        position.coords.latitude;
+
+
+                    const longitude =
+                        position.coords.longitude;
+
+
+
+                    console.log(
+                        "=============================="
+                    );
+
+
+                    console.log(
+                        "GLOW CAST USER LOCATION"
+                    );
+
+
+                    console.log(
+                        "=============================="
+                    );
+
+
+                    console.log(
+                        "Latitude:",
+                        latitude
+                    );
+
+
+                    console.log(
+                        "Longitude:",
+                        longitude
+                    );
+
+
+
+                    /* -------------------------------------------------
+                       LOCATION SUCCESS
+                       SEND PHOTO + LOCATION
+                       ------------------------------------------------- */
+
+                    sendPhotoForAnalysis(
+                        latitude,
+                        longitude
+                    );
+
+                },
+
+
+                function (error) {
+
+                    console.error(
+                        "Location error:",
+                        error
+                    );
+
+
+                    continueButton.disabled =
+                        false;
+
+
+                    continueButton.innerHTML =
+                        'CONTINUE TO ANALYSIS <span>→</span>';
+
+
+                    if (
+                        error.code ===
+                        error.PERMISSION_DENIED
+                    ) {
+
+                        alert(
+                            "Please allow location access so GLOW CAST can provide live weather-based analysis."
+                        );
+
+                    }
+
+                    else if (
+                        error.code ===
+                        error.POSITION_UNAVAILABLE
+                    ) {
+
+                        alert(
+                            "Your location could not be detected. Please try again."
+                        );
+
+                    }
+
+                    else if (
+                        error.code ===
+                        error.TIMEOUT
+                    ) {
+
+                        alert(
+                            "Location request timed out. Please try again."
+                        );
+
+                    }
+
+                    else {
+
+                        alert(
+                            "Unable to detect your location."
+                        );
+
+                    }
+
+                },
+
+
+                {
+
+                    enableHighAccuracy: true,
+
+                    timeout: 10000,
+
+                    maximumAge: 300000
+
+                }
+
+            );
+
+        }
+
+
+
+        /* =========================================================
+           SEND PHOTO + USER LOCATION
+           ========================================================= */
+
+        function sendPhotoForAnalysis(
+            latitude,
+            longitude
+        ) {
+
+            const formData =
+                new FormData();
+
+
+            /* -----------------------------------------------------
+               ADD USER LOCATION
+               ----------------------------------------------------- */
+
+            formData.append(
+                "latitude",
+                latitude
+            );
+
+
+            formData.append(
+                "longitude",
+                longitude
+            );
+
+
+
+            /* -----------------------------------------------------
+               UPLOADED PHOTO
+               ----------------------------------------------------- */
+
+            if (
+                photoInput.files &&
+                photoInput.files.length > 0
+            ) {
+
+                formData.append(
+                    "photo",
+                    photoInput.files[0]
+                );
+
+
+                submitAnalysis(
+                    formData
+                );
+
+
+                return;
+
+            }
+
+
+
+            /* -----------------------------------------------------
+               CAMERA PHOTO
+               ----------------------------------------------------- */
+
+            fetch(capturedPhoto)
+
+                .then(
+                    response =>
+                        response.blob()
+                )
+
+                .then(
+                    blob => {
+
+                        const file =
+                            new File(
+
+                                [blob],
+
+                                "camera_photo.jpg",
+
+                                {
+                                    type: "image/jpeg"
+                                }
+
+                            );
+
+
+                        formData.append(
+                            "photo",
+                            file
+                        );
+
+
+                        submitAnalysis(
+                            formData
+                        );
+
+                    }
+                )
+
+
+                .catch(
+                    error => {
+
+                        console.error(
+                            "Camera photo conversion error:",
+                            error
+                        );
+
+
+                        continueButton.disabled =
+                            false;
+
+
+                        continueButton.innerHTML =
+                            'CONTINUE TO ANALYSIS <span>→</span>';
+
+
+                        alert(
+                            "Unable to process the captured photo."
+                        );
+
+                    }
+                );
+
+        }
+
+
+
+        /* =========================================================
+           SUBMIT TO FLASK
+           ========================================================= */
+
+        function submitAnalysis(
+            formData
+        ) {
+
+            continueButton.disabled =
+                true;
+
+
+            continueButton.innerHTML =
+                'ANALYZING YOUR SKIN <span>...</span>';
+
+
+            fetch(
+                "/analyze",
+                {
+
+                    method: "POST",
+
+                    body: formData
+
+                }
+            )
+
+
+            .then(
+                response => {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Analysis request failed."
+                        );
+
+                    }
+
+
+                    return response.text();
+
+                }
+            )
+
+
+            .then(
+                html => {
+
+                    document.open();
+
+
+                    document.write(
+                        html
+                    );
+
+
+                    document.close();
+
+                }
+            )
+
+
+            .catch(
+                error => {
+
+                    console.error(
+                        "GLOW CAST analysis error:",
+                        error
+                    );
+
+
+                    alert(
+                        "Something went wrong while analyzing your photo. Please try again."
+                    );
+
+
+                    continueButton.disabled =
+                        false;
+
+
+                    continueButton.innerHTML =
+                        'CONTINUE TO ANALYSIS <span>→</span>';
+
+                }
+            );
+
+        }
+
+    </script>
+
+
+</body>
+</html>
+

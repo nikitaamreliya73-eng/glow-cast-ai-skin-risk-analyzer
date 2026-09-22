@@ -1,0 +1,37 @@
+# Environment / Secrets
+.env
+
+# Python virtual environments
+tfenv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated / temporary files
+uploads/
+generated/
+duplicate_quarantine/
+
+# Local test files
+test_photo.jpg
+# Old / experimental ML models
+model/skin_type_cnn.keras
+model/skin_type_cnn_finetuned.keras
+model/best_skin_type_cnn_finetuned.keras
+model/skin_type_cnn_v2.keras
+model/skin_type_cnn_v3.keras
+model/best_skin_type_cnn_v2.keras
+model/best_skin_type_cnn_v3.keras
+model/skin_type_cnn_v4.keras
+model/best_skin_type_cnn_v4.keras
+model/skin_type_cnn_v5.keras
+model/best_skin_type_cnn_v5.keras
+model/best_skin_type_cnn_clean.keras
+model/best_skin_type_cnn.keras
+model/skin_type_cnn_improved.keras
+# Local datasets
+dataset/
+skin_dataset/
+skin_dataset_clean/

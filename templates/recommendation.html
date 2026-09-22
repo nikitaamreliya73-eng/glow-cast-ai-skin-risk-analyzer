@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        GLOW CAST — Your Beauty Edit
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         PAGE
+         ===================================================== -->
+
+    <main class="recommendation-page">
+
+
+        <!-- =================================================
+             TOP NAV
+             ================================================= -->
+
+        <header class="recommendation-header">
+
+            <a
+                href="/"
+                class="recommendation-logo"
+            >
+                GLOW CAST
+            </a>
+
+           <a href="javascript:history.back()" class="back-link">← BACK TO REPORT</a>
+           
+        </header>
+
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="recommendation-hero">
+
+            <div class="eyebrow">
+                THE GLOW CAST EDIT
+            </div>
+
+
+            <h1>
+
+                Your personalized
+                <em>beauty ritual.</em>
+
+            </h1>
+
+
+            <p>
+
+                A beauty routine thoughtfully adapted to
+                your skin profile and today's atmosphere.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROFILE
+             ================================================= -->
+
+        <section class="profile-section">
+
+            <div class="section-label">
+
+                YOUR BEAUTY PROFILE
+
+            </div>
+
+
+            <div class="profile-grid">
+
+
+                <!-- SKIN -->
+
+                <div class="profile-card">
+
+                    <span class="card-number">
+                        01
+                    </span>
+
+                    <span class="card-label">
+                        SKIN TYPE
+                    </span>
+
+                    <strong>
+                        {{ skin_type|capitalize }}
+                    </strong>
+
+                </div>
+
+
+
+                <!-- LOCATION -->
+
+                <div class="profile-card">
+
+                    <span class="card-number">
+                        02
+                    </span>
+
+                    <span class="card-label">
+                        LOCATION
+                    </span>
+
+                    <strong>
+                        {{ city }}
+                    </strong>
+
+                </div>
+
+
+
+                <!-- TEMPERATURE -->
+
+                <div class="profile-card">
+
+                    <span class="card-number">
+                        03
+                    </span>
+
+                    <span class="card-label">
+                        TEMPERATURE
+                    </span>
+
+                    <strong>
+                        {{ temperature }}°C
+                    </strong>
+
+                </div>
+
+
+
+                <!-- HUMIDITY -->
+
+                <div class="profile-card">
+
+                    <span class="card-number">
+                        04
+                    </span>
+
+                    <span class="card-label">
+                        HUMIDITY
+                    </span>
+
+                    <strong>
+                        {{ humidity }}%
+                    </strong>
+
+                </div>
+
+
+
+                <!-- WEATHER -->
+
+                <div class="profile-card weather-profile">
+
+                    <span class="card-number">
+                        05
+                    </span>
+
+                    <span class="card-label">
+                        WEATHER
+                    </span>
+
+                    <strong>
+                        {{ weather_condition|capitalize }}
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAIN RECOMMENDATIONS
+             ================================================= -->
+
+        <section class="beauty-edit-section">
+
+            <div class="section-label">
+
+                YOUR PERSONALIZED EDIT
+
+            </div>
+
+
+            <div class="recommendation-grid">
+
+
+                <!-- =================================================
+                     MOISTURIZER
+                     ================================================= -->
+
+                <article class="beauty-card large-card">
+
+                    <div class="beauty-card-top">
+
+                        <span class="beauty-number">
+                            01
+                        </span>
+
+                        <span class="beauty-category">
+                            HYDRATION
+                        </span>
+
+                    </div>
+
+
+                    <div class="beauty-icon">
+                        💧
+                    </div>
+
+
+                    <h2>
+                        Moisturizer
+                    </h2>
+
+
+                    <h3>
+                        {{ recommendations.moisturizer }}
+                    </h3>
+
+
+                    <p>
+                        {{ recommendations.hydration_reason }}
+                    </p>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     SUNSCREEN
+                     ================================================= -->
+
+                <article class="beauty-card large-card">
+
+                    <div class="beauty-card-top">
+
+                        <span class="beauty-number">
+                            02
+                        </span>
+
+                        <span class="beauty-category">
+                            PROTECTION
+                        </span>
+
+                    </div>
+
+
+                    <div class="beauty-icon">
+                        ☀
+                    </div>
+
+
+                    <h2>
+                        Sunscreen
+                    </h2>
+
+
+                    <h3>
+                        {{ recommendations.sunscreen }}
+                    </h3>
+
+
+                    <p>
+                        {{ recommendations.protection_reason }}
+                    </p>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     MAKEUP
+                     ================================================= -->
+
+                <article class="beauty-card large-card">
+
+                    <div class="beauty-card-top">
+
+                        <span class="beauty-number">
+                            03
+                        </span>
+
+                        <span class="beauty-category">
+                            COMPLEXION
+                        </span>
+
+                    </div>
+
+
+                    <div class="beauty-icon">
+                        ✦
+                    </div>
+
+
+                    <h2>
+                        Makeup
+                    </h2>
+
+
+                    <h3>
+                        {{ recommendations.makeup }}
+                    </h3>
+
+
+                    <p>
+                        {{ recommendations.makeup_reason }}
+                    </p>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     DAILY RITUAL
+                     ================================================= -->
+
+                <article class="beauty-card large-card">
+
+                    <div class="beauty-card-top">
+
+                        <span class="beauty-number">
+                            04
+                        </span>
+
+                        <span class="beauty-category">
+                            DAILY RITUAL
+                        </span>
+
+                    </div>
+
+
+                    <div class="beauty-icon">
+                        ◌
+                    </div>
+
+
+                    <h2>
+                        Skincare Step
+                    </h2>
+
+
+                    <h3>
+                        Your Daily Ritual
+                    </h3>
+
+
+                    <p>
+                        {{ recommendations.daily_ritual }}
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BEAUTY INTELLIGENCE
+             ================================================= -->
+
+        <section class="beauty-tip-section">
+
+            <div class="tip-content">
+
+
+                <div class="section-label">
+
+                    TODAY'S BEAUTY INTELLIGENCE
+
+                </div>
+
+
+                <div class="tip-line"></div>
+
+
+                <h2>
+
+                    "{{ recommendations.beauty_intelligence }}"
+
+                </h2>
+
+
+                <span class="tip-signature">
+
+                    — GLOW CAST
+
+                </span>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DISCLAIMER
+             ================================================= -->
+
+        <section class="recommendation-note">
+
+            <p>
+
+                GLOW CAST recommendations are generated from
+                your provided skin profile and current weather
+                conditions. They are intended for beauty and
+                skincare guidance and are not medical advice.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="recommendation-footer">
+
+            <div>
+                GLOW CAST
+            </div>
+
+            <span>
+                WEATHER ADAPTIVE BEAUTY
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+</body>
+
+</html>

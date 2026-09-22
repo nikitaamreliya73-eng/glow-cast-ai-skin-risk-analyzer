@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GLOW CAST — Beauty Report</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="report-page">
+
+        <!-- =================================================
+             REPORT HEADER
+             ================================================= -->
+
+        <header class="report-header">
+
+            <div class="brand">
+                GLOW CAST
+            </div>
+
+            <div class="eyebrow">
+                AI POWERED BEAUTY INTELLIGENCE
+            </div>
+
+            <h1 class="title">
+                YOUR <span>BEAUTY</span><br>
+                REPORT
+            </h1>
+
+            <p class="subtitle">
+                Your skin analysis, interpreted through AI and environmental intelligence.
+            </p>
+
+        </header>
+
+
+        <!-- =================================================
+             REPORT CONTAINER
+             ================================================= -->
+
+        <section class="report-container">
+
+
+            <!-- =================================================
+                 AI SKIN ANALYSIS
+                 ================================================= -->
+
+            <div class="glass-card skin-result">
+
+                <div>
+
+                    <div class="section-label">
+                        AI SKIN ANALYSIS
+                    </div>
+
+                    <h2 class="skin-heading">
+
+                        Hello,
+
+                        <span>
+                            {{ skin_type|capitalize }} Skin
+                        </span>
+
+                    </h2>
+
+                    <p class="skin-description">
+
+                        Your skin profile has been analyzed using the
+                        GLOW CAST AI skin classification model.
+
+                    </p>
+
+                </div>
+
+
+                {% if skin_confidence is not none %}
+
+                <div class="confidence-box">
+
+                    <span class="confidence-label">
+                        AI CONFIDENCE
+                    </span>
+
+                    <div class="confidence-value">
+                        {{ skin_confidence }}%
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LIVE ATMOSPHERE
+                 ================================================= -->
+
+            <div class="section-label">
+                LIVE ATMOSPHERE
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="glass-card location-card">
+
+                <div class="info-label">
+                    CURRENT LOCATION
+                </div>
+
+                <div class="location-value">
+                    {{ city }}
+                </div>
+
+            </div>
+
+
+            <!-- WEATHER INFORMATION -->
+
+            <div class="info-grid">
+
+
+                <!-- TEMPERATURE -->
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-temperature-half info-icon"></i>
+
+                    <div>
+
+                        <div class="info-label">
+                            TEMPERATURE
+                        </div>
+
+                        <div class="info-value">
+                            {{ temperature }}°C
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HUMIDITY -->
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-droplet info-icon"></i>
+
+                    <div>
+
+                        <div class="info-label">
+                            HUMIDITY
+                        </div>
+
+                        <div class="info-value">
+                            {{ humidity }}%
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- UV INDEX -->
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-sun info-icon"></i>
+
+                    <div>
+
+                        <div class="info-label">
+                            UV INDEX
+                        </div>
+
+                        <div class="info-value">
+                            {{ uv_index }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WIND -->
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-wind info-icon"></i>
+
+                    <div>
+
+                        <div class="info-label">
+                            WIND SPEED
+                        </div>
+
+                        <div class="info-value">
+                            {{ wind_speed }} m/s
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 CURRENT WEATHER
+                 ================================================= -->
+
+            <div class="glass-card weather-condition-card">
+
+                <div class="info-label">
+                    CURRENT WEATHER
+                </div>
+
+                <div class="weather-condition-value">
+
+                    {{ weather_condition|capitalize }}
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ENVIRONMENTAL SKIN RISK
+                 ================================================= -->
+
+            <div class="risk-section">
+
+
+                <div class="glass-card risk-card">
+
+                    <div class="risk-label">
+                        ENVIRONMENTAL SKIN RISK
+                    </div>
+
+                    <div class="risk-value">
+                        {{ prediction }}
+                    </div>
+
+                </div>
+
+
+                <div class="glass-card risk-card">
+
+                    <div class="risk-label">
+                        RISK MODEL CONFIDENCE
+                    </div>
+
+                    <div class="risk-confidence">
+                        {{ confidence }}%
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 YOUR SKIN × TODAY'S ATMOSPHERE
+                 REPLACEMENT FOR WITHOUT CARE SECTION
+                 ================================================= -->
+
+            <section class="environment-insight-section">
+
+                <div class="environment-insight-content">
+
+
+                    <!-- EYEBROW -->
+
+                    <p class="environment-insight-eyebrow">
+
+                        YOUR SKIN × TODAY'S ATMOSPHERE
+
+                    </p>
+
+
+                    <!-- TITLE -->
+
+                    <h2 class="environment-insight-title">
+
+                        UNDERSTANDING YOUR
+
+                        <span>
+                            ENVIRONMENT.
+                        </span>
+
+                    </h2>
+
+
+                    <!-- INTRO -->
+
+                    <p class="environment-insight-intro">
+
+                        GLOW CAST combines your AI-detected skin profile
+                        with today's live environmental conditions to
+                        understand how the atmosphere may interact with your skin.
+
+                    </p>
+
+
+
+                    <!-- =================================================
+                         ENVIRONMENT CARDS
+                         ================================================= -->
+
+                    <div class="environment-insight-grid">
+
+
+                        <!-- TEMPERATURE -->
+
+                        <div class="environment-insight-card">
+
+                            <div class="environment-insight-icon">
+
+                                <i class="fa-solid fa-temperature-half"></i>
+
+                            </div>
+
+                            <div class="environment-insight-label">
+
+                                TEMPERATURE
+
+                            </div>
+
+                            <div class="environment-insight-value">
+
+                                {{ temperature }}°C
+
+                            </div>
+
+                            <div class="environment-insight-status">
+
+                                {% if temperature >= 32 %}
+
+                                    WARM ENVIRONMENT
+
+                                {% elif temperature >= 25 %}
+
+                                    MODERATE ENVIRONMENT
+
+                                {% else %}
+
+                                    COOL ENVIRONMENT
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- HUMIDITY -->
+
+                        <div class="environment-insight-card">
+
+                            <div class="environment-insight-icon">
+
+                                <i class="fa-solid fa-droplet"></i>
+
+                            </div>
+
+                            <div class="environment-insight-label">
+
+                                HUMIDITY
+
+                            </div>
+
+                            <div class="environment-insight-value">
+
+                                {{ humidity }}%
+
+                            </div>
+
+                            <div class="environment-insight-status">
+
+                                {% if humidity >= 80 %}
+
+                                    HIGH HUMIDITY
+
+                                {% elif humidity >= 50 %}
+
+                                    MODERATE HUMIDITY
+
+                                {% else %}
+
+                                    LOW HUMIDITY
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- UV -->
+
+                        <div class="environment-insight-card">
+
+                            <div class="environment-insight-icon">
+
+                                <i class="fa-solid fa-sun"></i>
+
+                            </div>
+
+                            <div class="environment-insight-label">
+
+                                UV INDEX
+
+                            </div>
+
+                            <div class="environment-insight-value">
+
+                                {{ uv_index }}
+
+                            </div>
+
+                            <div class="environment-insight-status">
+
+                                {% if uv_index >= 8 %}
+
+                                    VERY HIGH EXPOSURE
+
+                                {% elif uv_index >= 6 %}
+
+                                    HIGH EXPOSURE
+
+                                {% elif uv_index >= 3 %}
+
+                                    MODERATE EXPOSURE
+
+                                {% else %}
+
+                                    LOW EXPOSURE
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         AI ENVIRONMENTAL INSIGHT
+                         ================================================= -->
+
+                    <div class="environment-ai-insight">
+
+
+                        <div class="environment-ai-insight-mark">
+
+                            <i class="fa-solid fa-sparkles"></i>
+
+                        </div>
+
+
+                        <div class="environment-ai-insight-content">
+
+
+                            <div class="environment-ai-insight-label">
+
+                                GLOW CAST AI INSIGHT
+
+                            </div>
+
+
+                            <h3>
+
+                                {{ skin_type|capitalize }} skin in
+                                {{ city }} today.
+
+                            </h3>
+
+
+                            <p>
+
+                                Your {{ skin_type|lower }} skin profile is currently
+                                being evaluated alongside a temperature of
+                                {{ temperature }}°C, humidity of {{ humidity }}%
+                                and UV index {{ uv_index }}.
+                                These environmental factors help GLOW CAST
+                                personalize your beauty recommendations.
+
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         LIVE ENVIRONMENT SUMMARY
+                         ================================================= -->
+
+                    <div class="environment-summary">
+
+
+                        <div class="environment-summary-line"></div>
+
+
+                        <p>
+                            LIVE ENVIRONMENTAL DATA
+                        </p>
+
+
+                        <span>
+
+                            {{ weather_condition|capitalize }}
+
+                            &nbsp;•&nbsp;
+
+                            {{ wind_speed }} m/s WIND
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- DISCLAIMER -->
+
+                    <p class="environment-insight-disclaimer">
+
+                        Environmental insights are informational and intended
+                        for beauty-recommendation purposes only. They are not
+                        a medical diagnosis or treatment recommendation.
+
+                    </p>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 THE GLOW CAST EDIT
+                 ================================================= -->
+
+            <div class="glass-card beauty-edit">
+
+                <div class="section-label">
+                    THE GLOW CAST EDIT
+                </div>
+
+
+                <h2>
+
+                    Your personalized
+
+                    <span>
+                        beauty intelligence.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    GLOW CAST combines your AI-detected skin profile
+                    with environmental conditions to understand how
+                    your skin may respond to today's atmosphere.
+
+                </p>
+
+
+                <div class="beauty-note">
+
+                    This analysis is an experimental AI prototype
+                    intended for educational and beauty-recommendation
+                    purposes. It is not a medical diagnosis.
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PERSONALIZED RECOMMENDATION
+             ================================================= -->
+
+        <section class="recommendation-entry">
+
+            <div class="recommendation-entry-content">
+
+
+                <div class="recommendation-entry-label">
+
+                    THE GLOW CAST EDIT
+
+                </div>
+
+
+                <h2>
+
+                    Your personalized<br>
+                    beauty ritual awaits.
+
+                </h2>
+
+
+                <p>
+
+                    Discover beauty recommendations adapted to
+                    your skin profile and today's atmosphere.
+
+                </p>
+
+
+                <a
+                    href="/recommendation?city={{ city|urlencode }}&skin_type={{ skin_type|urlencode }}&temperature={{ temperature }}&humidity={{ humidity }}&weather_condition={{ weather_condition|urlencode }}"
+                    class="recommendation-entry-button"
+                >
+
+                    VIEW MY PERSONALIZED RECOMMENDATION
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="report-footer">
+
+            <div class="footer-brand">
+                GLOW CAST
+            </div>
+
+            <div>
+                WEATHER ADAPTIVE BEAUTY
+            </div>
+
+            <div>
+                AI SKIN INTELLIGENCE
+            </div>
+
+        </footer>
+
+
+    </main>
+
+</body>
+</html>
