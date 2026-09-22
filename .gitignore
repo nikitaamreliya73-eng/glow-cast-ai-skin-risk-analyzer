@@ -35,3 +35,4 @@ model/skin_type_cnn_improved.keras
 dataset/
 skin_dataset/
 skin_dataset_clean/
+quarantine_manifest.csv
