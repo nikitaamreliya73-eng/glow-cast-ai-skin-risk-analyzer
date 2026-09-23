@@ -8,7 +8,10 @@ from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from PIL import Image
 import numpy as np
-import tensorflow as tf
+try:
+    import tensorflow as tf
+except:
+    tf = None
 
 
 # =========================================================
