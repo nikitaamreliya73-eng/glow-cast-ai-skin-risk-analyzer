@@ -10,8 +10,8 @@ Jinja2==3.1.6
 joblib==1.6.0
 MarkupSafe==3.0.3
 narwhals==2.26.0
-numpy==2.5.3
-opencv-python==5.0.0.93
+numpy==1.26.4
+opencv-python==4.8.0.76
 pandas==3.0.6
 pillow==12.3.0
 python-dateutil==2.9.0.post0
