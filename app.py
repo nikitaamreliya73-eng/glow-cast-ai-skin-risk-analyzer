@@ -127,11 +127,10 @@ def predict_skin_type(image_file):
         image_array,
         axis=0
     )
-
-    probabilities = skin_model.predict(
+    probabilities = skin_model(
         image_array,
-        verbose=0
-    )[0]
+        training=False
+        ).numpy()[0]
 
     predicted_index = int(
         np.argmax(probabilities)
