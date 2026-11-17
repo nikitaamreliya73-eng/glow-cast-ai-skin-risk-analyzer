@@ -1,17 +1,20 @@
+# =========================================================
+# IMPORTS
+# =========================================================
+
+import tensorflow as tf
+
 from flask import Flask, render_template, request, session
 import joblib
 import pandas as pd
 import os
 import requests
+import numpy as np
 
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from PIL import Image
-import numpy as np
-try:
-    import tensorflow as tf
-except:
-    tf = None
+
 
 
 # =========================================================
