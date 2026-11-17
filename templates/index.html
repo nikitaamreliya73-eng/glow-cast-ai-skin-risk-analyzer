@@ -1666,16 +1666,27 @@
             .then(
                 response => {
 
-                    if (!response.ok) {
+                   if (!response.ok) {
 
-                        throw new Error(
-                            "Analysis request failed."
-                        );
+    return response.text().then(
+        errorText => {
 
-                    }
+            console.error(
+                "SERVER ERROR:",
+                response.status,
+                errorText
+            );
 
+            throw new Error(
+                "Server Error: " + response.status
+            );
 
-                    return response.text();
+        }
+    );
+
+}
+
+return response.text();
 
                 }
             )
