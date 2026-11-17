@@ -3,7 +3,12 @@
 # =========================================================
 
 import tensorflow as tf
+# =========================================================
+# RENDER FREE - TENSORFLOW CPU OPTIMIZATION
+# =========================================================
 
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
 from flask import Flask, render_template, request, session
 import joblib
 import pandas as pd
